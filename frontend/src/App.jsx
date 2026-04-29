@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import CreateComplaint from "./pages/CreateComplaint";
+import AssignComplaint from "./pages/AssignComplaint";
 
 function App() {
   return (

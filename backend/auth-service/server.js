@@ -5,6 +5,9 @@ const authRoutes = require("./routes/auth.routes");
 const app = express();
 app.use(express.json());
 
+const cors = require("cors");
+app.use(cors());
+
 mongoose.connect("mongodb://localhost:27017/fsad_auth");
 
 app.use("/auth", authRoutes);

@@ -49,15 +49,15 @@ export default function AssignComplaint() {
   };
 
   
-return (
-  <>
-    <NavBar />
-    <PageContainer title="Assign Complaints">
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        {/* same table logic */}
-      </table>
-    </PageContainer>
-  </>
-);
+  return (
+    <>
+      <NavBar />
+      <PageContainer title="Assign Complaints">
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          {/* same table logic */}
+        </table>
+      </PageContainer>
+    </>
+  );
 
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { complaintApi } from "../services/api";
+import axios from "axios";
 import NavBar from "../components/NavBar";
+import PageContainer from "../components/PageContainer";
 
 function CreateComplaint() {
   const [form, setForm] = useState({
@@ -8,13 +9,13 @@ function CreateComplaint() {
     category: "",
     priority: "",
     location: "",
-    description: "",
+    description: ""
   });
 
   const handleChange = (e) => {
     setForm({
       ...form,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
@@ -22,70 +23,117 @@ function CreateComplaint() {
     e.preventDefault();
 
     try {
-      await complaintApi.post(
-        "/complaints",
+      await axios.post(
+        "http://localhost:5000/complaints",
         form,
         {
           headers: {
-            Authorization: localStorage.getItem("token"),
-          },
+            Authorization: localStorage.getItem("token")
+          }
         }
       );
 
       alert("Complaint created successfully");
       window.location.href = "/dashboard";
     } catch (err) {
-      console.error(err);
       alert("Failed to create complaint");
     }
   };
 
   return (
     <>
-    <NavBar />
-    <div style={{ padding: "20px" }}>
-      <h2>Create Complaint</h2>
+      <NavBar />
 
-      <form onSubmit={handleSubmit}>
-        <input
-          name="title"
-          placeholder="Title"
-          onChange={handleChange}
-          required
-        /><br /><br />
+      <PageContainer title="Create Complaint">
+        <form onSubmit={handleSubmit}>
+          <FormField label="Title">
+            <input
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              required
+            />
+          </FormField>
 
-        <input
-          name="category"
-          placeholder="Category (Electrical / Plumbing)"
-          onChange={handleChange}
-          required
-        /><br /><br />
+          <FormField label="Category">
+            <input
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+              placeholder="Electrical / Plumbing / Network"
+              required
+            />
+          </FormField>
 
-        <select name="priority" onChange={handleChange} required>
-          <option value="">Select Priority</option>
-          <option value="Low">Low</option>
-          <option value="Medium">Medium</option>
-          <option value="High">High</option>
-        </select><br /><br />
+          <FormField label="Priority">
+            <select
+              name="priority"
+              value={form.priority}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Select priority</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </FormField>
 
-        <input
-          name="location"
-          placeholder="Location"
-          onChange={handleChange}
-          required
-        /><br /><br />
+          <FormField label="Location">
+            <input
+              name="location"
+              value={form.location}
+              onChange={handleChange}
+              placeholder="Hostel / Block / Room"
+              required
+            />
+          </FormField>
 
-        <textarea
-          name="description"
-          placeholder="Describe the issue"
-          onChange={handleChange}
-          required
-        /><br /><br />
+          <FormField label="Description">
+            <textarea
+              name="description"
+              value={form.description}
+              onChange={handleChange}
+              rows={4}
+              required
+            />
+          </FormField>
 
-        <button type="submit">Submit Complaint</button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            style={{
+              backgroundColor: "#2563eb",
+              color: "#ffffff",
+              padding: "10px 16px",
+              border: "none",
+              borderRadius: "6px",
+              cursor: "pointer"
+            }}
+          >
+            Submit Complaint
+          </button>
+        </form>
+      </PageContainer>
     </>
+  );
+}
+
+/* ---------- Reusable Form Field ---------- */
+
+function FormField({ label, children }) {
+  return (
+    <div style={{ marginBottom: "16px" }}>
+      <label
+        style={{
+          display: "block",
+          marginBottom: "6px",
+          fontWeight: "500"
+        }}
+      >
+        {label}
+      </label>
+      {children}
+    </div>
   );
 }
 

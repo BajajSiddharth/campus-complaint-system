@@ -8,7 +8,17 @@ app.use(express.json());
 const cors = require("cors");
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/fsad_auth");
+const mongoose = require("mongoose");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/fsad_auth")
+  .then(() => {
+    console.log("✅ MongoDB connected (Auth Service)");
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+  });
+
 
 app.use("/auth", authRoutes);
 

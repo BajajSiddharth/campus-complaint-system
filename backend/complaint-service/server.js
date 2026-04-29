@@ -1,14 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const complaintRoutes = require("./routes/complaint.routes");
+const app = express();
 
 const cors = require("cors");
 app.use(cors());
 
-const app = express();
-app.use(express.json());
 
-const mongoose = require("mongoose");
+app.use(express.json());
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/fsad_complaints")

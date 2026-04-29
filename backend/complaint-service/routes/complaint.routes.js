@@ -33,11 +33,15 @@ router.put("/:id/assign", auth, async (req, res) => {
 });
 
 router.put("/:id/status", auth, async (req, res) => {
+  if (!["MAINTENANCE", "ADMIN"].includes(req.user.role)) {
+    return res.status(403).json({ message: "Not allowed" });
+  }
+
   await Complaint.findByIdAndUpdate(req.params.id, {
     status: req.body.status
   });
+
   res.json({ message: "Status updated" });
 });
-
 module.exports = router;
 ``

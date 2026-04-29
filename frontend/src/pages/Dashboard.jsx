@@ -18,9 +18,7 @@ function Dashboard() {
   return (
     <div>
       <h2>Complaints</h2>
-      <button onClick={() => window.location.href = "/create-complaint"}>
-          Create New Complaint
-      </button>
+      
       <ul>
         {complaints.map(c => (
           <li key={c._id}>

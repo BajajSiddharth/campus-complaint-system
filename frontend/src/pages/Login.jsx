@@ -11,11 +11,13 @@ function Login() {
     );
 
     localStorage.setItem("token", response.data.token);
+    console.log("Login success, token stored");
     window.location.href = "/dashboard";
+
+    
   };
 
   return <button onClick={login}>Login</button>;
 }
 
 export default Login;
-``

@@ -44,4 +44,39 @@ router.put("/:id/status", auth, async (req, res) => {
   res.json({ message: "Status updated" });
 });
 module.exports = router;
+
+/**
+ * @swagger
+ * /complaints:
+ *   post:
+ *     summary: Create a new complaint
+ *     tags: [Complaints]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - category
+ *               - priority
+ *             properties:
+ *               title:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *               priority:
+ *                 type: string
+ *               location:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Complaint created successfully
+ *       401:
+ *         description: Unauthorized
+ */
+router.post("/", auth, createComplaint);
 ``

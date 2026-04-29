@@ -18,7 +18,7 @@ export default function AssignComplaint() {
 
     // Fetch maintenance staff (mocked / static for now)
     setStaffList([
-      { id: "m1", name: "Electrician - Ravi" },
+      { id: "69f27056ed051536f8cd5721", name: "Electrician - Ravi" },
       { id: "m2", name: "Plumber - Suresh" },
     ]);
   }, []);

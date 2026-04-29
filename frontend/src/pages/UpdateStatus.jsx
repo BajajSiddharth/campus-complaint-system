@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
+import PageContainer from "../components/PageContainer";
 
 function UpdateStatus() {
   const [complaints, setComplaints] = useState([]);
@@ -36,33 +37,31 @@ function UpdateStatus() {
     }
   };
 
+  
   return (
     <>
-    <NavBar />
-    <div style={{ padding: "20px" }}>
-      <h2>My Assigned Complaints</h2>
-
-      {complaints.length === 0 && <p>No assigned complaints</p>}
-
-      <ul>
+      <NavBar />
+      <PageContainer title="My Assigned Complaints">
         {complaints.map(c => (
-          <li key={c._id} style={{ marginBottom: "10px" }}>
-            <strong>{c.title}</strong> — {c.status}
-
-            {c.status === "IN_PROGRESS" && (
-              <button
-                style={{ marginLeft: "10px" }}
-                onClick={() => updateStatus(c._id)}
-              >
-                Mark as Resolved
-              </button>
-            )}
-          </li>
+          <div
+            key={c._id}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              padding: "12px",
+              borderBottom: "1px solid #e5e7eb"
+            }}
+          >
+            <span>{c.title}</span>
+            <button onClick={() => updateStatus(c._id)}>
+              Mark Resolved
+            </button>
+          </div>
         ))}
-      </ul>
-    </div>
+      </PageContainer>
     </>
   );
+
 }
 
 export default UpdateStatus;

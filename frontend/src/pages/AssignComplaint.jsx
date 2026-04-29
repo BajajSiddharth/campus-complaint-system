@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NavBar from "../components/NavBar";
 
 export default function AssignComplaint() {
   const [complaints, setComplaints] = useState([]);

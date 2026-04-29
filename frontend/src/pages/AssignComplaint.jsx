@@ -50,14 +50,69 @@ export default function AssignComplaint() {
 
   
   return (
-    <>
-      <NavBar />
-      <PageContainer title="Assign Complaints">
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          {/* same table logic */}
-        </table>
-      </PageContainer>
-    </>
-  );
-
-}
+      <>
+        <NavBar />
+  
+        <PageContainer title="Assign Complaints">
+          {complaints.length === 0 && <p>No complaints available</p>}
+  
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse"
+            }}
+          >
+            <thead>
+              <tr style={{ backgroundColor: "#f3f4f6" }}>
+                <th style={thStyle}>Title</th>
+                <th style={thStyle}>Status</th>
+                <th style={thStyle}>Assign To</th>
+              </tr>
+            </thead>
+            <tbody>
+              {complaints.map(c => (
+                <tr key={c._id}>
+                  <td style={tdStyle}>{c.title}</td>
+                  <td style={tdStyle}>{c.status}</td>
+                  <td style={tdStyle}>
+                    {c.status === "OPEN" ? (
+                      <select
+                        defaultValue=""
+                        onChange={e => assignComplaint(c._id, e.target.value)}
+                      >
+                        <option value="" disabled>
+                          Select Staff
+                        </option>
+                        {staffList.map(s => (
+                          <option key={s.id} value={s.id}>
+                            {s.name}
+                          </option>
+                        ))}
+                      </select>
+                    ) : (
+                      <span style={{ color: "#16a34a", fontWeight: "500" }}>
+                        Assigned
+                      </span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </PageContainer>
+      </>
+    );
+  }
+  
+  const thStyle = {
+    textAlign: "left",
+    padding: "10px",
+    borderBottom: "1px solid #e5e7eb"
+  };
+  
+  const tdStyle = {
+    padding: "10px",
+    borderBottom: "1px solid #e5e7eb"
+  };
+  
+  export default AssignComplaint;

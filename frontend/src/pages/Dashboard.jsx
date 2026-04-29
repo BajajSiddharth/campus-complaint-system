@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
+import SummaryCard from "./components/SummaryCard";
 
 function Dashboard() {
   const [complaints, setComplaints] = useState([]);
@@ -38,8 +39,28 @@ function Dashboard() {
         <SummaryCard title="Resolved" value={resolved} color="#16a34a" />
       </div>
 
+      <div style={{ background: "#ffffff", borderRadius: "8px", padding: "16px" }}>
+          <h3 style={{ marginBottom: "12px" }}>Complaints</h3>
 
-      {/* List */}
+          {complaints.length === 0 && <p>No complaints found</p>}
+
+          {complaints.map(c => (
+            <div
+              key={c._id}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: "10px",
+                borderBottom: "1px solid #e5e7eb"
+              }}
+            >
+              <span>{c.title}</span>
+              <span style={{ fontWeight: "bold" }}>{c.status}</span>
+            </div>
+          ))}
+        </div>
+
+      /* {/* List */}
       <ul>
         {complaints.map(c => (
           <li key={c._id}>
@@ -48,7 +69,7 @@ function Dashboard() {
         ))}
       </ul>
     </div>
-  );
+  ); */
 }
 
 export default Dashboard;

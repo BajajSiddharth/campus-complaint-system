@@ -4,6 +4,14 @@ const auth = require("../middleware/auth.middleware");
 
 /**
  * @swagger
+ * tags:
+ *   name: Complaints
+ *   description: Complaint management APIs
+ */
+
+
+/**
+ * @swagger
  * /complaints:
  *   post:
  *     summary: Create a new complaint
@@ -44,6 +52,35 @@ router.post("/", auth, async (req, res) => {
   res.json(complaint);
 });
 
+
+/**
+ * @swagger
+ * /complaints:
+ *   get:
+ *     summary: Fetch complaints based on user role
+ *     tags: [Complaints]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: List of complaints
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   title:
+ *                     type: string
+ *                   status:
+ *                     type: string
+ *                     example: OPEN
+ *       401:
+ *         description: Unauthorized
+ */
+
+
 router.get("/", auth, async (req, res) => {
   let query = {};
   if (req.user.role === "STUDENT")
@@ -55,6 +92,42 @@ router.get("/", auth, async (req, res) => {
   res.json(complaints);
 });
 
+
+/**
+ * @swagger
+ * /complaints/{id}/assign:
+ *   put:
+ *     summary: Assign complaint to maintenance staff (Admin only)
+ *     tags: [Complaints]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Complaint ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - assignedTo
+ *             properties:
+ *               assignedTo:
+ *                 type: string
+ *                 example: 64fa1abc123
+ *     responses:
+ *       200:
+ *         description: Complaint assigned successfully
+ *       403:
+ *         description: Forbidden
+ */
+
+
 router.put("/:id/assign", auth, async (req, res) => {
   if (req.user.role !== "ADMIN")
     return res.status(403).json({ message: "Unauthorized" });
@@ -65,6 +138,43 @@ router.put("/:id/assign", auth, async (req, res) => {
   });
   res.json({ message: "Assigned successfully" });
 });
+
+
+/**
+ * @swagger
+ * /complaints/{id}/status:
+ *   put:
+ *     summary: Update complaint status (Maintenance/Admin)
+ *     tags: [Complaints]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Complaint ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - status
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 example: RESOLVED
+ *     responses:
+ *       200:
+ *         description: Status updated successfully
+ *       403:
+ *         description: Forbidden
+ */
+
+
 
 router.put("/:id/status", auth, async (req, res) => {
   if (!["MAINTENANCE", "ADMIN"].includes(req.user.role)) {

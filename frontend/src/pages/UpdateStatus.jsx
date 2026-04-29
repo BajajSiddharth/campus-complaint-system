@@ -83,5 +83,6 @@ function UpdateStatus() {
     </PageContainer>
   </>
 );
+}
 export default UpdateStatus;
 ``

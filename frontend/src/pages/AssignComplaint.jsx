@@ -114,5 +114,4 @@ export default function AssignComplaint() {
     padding: "10px",
     borderBottom: "1px solid #e5e7eb"
   };
-  
-  export default AssignComplaint;
+

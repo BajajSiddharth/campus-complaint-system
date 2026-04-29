@@ -8,7 +8,7 @@ router.post("/login", async (req, res) => {
 
     console.log("Login attempt:", email);
 
-    const user = await User.findOne({ email, password });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -30,3 +30,4 @@ router.post("/login", async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 });
+module.exports = router;

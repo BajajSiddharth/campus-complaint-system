@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { complaintApi } from "../services/api";
+import NavBar from "../components/NavBar";
 
 function CreateComplaint() {
   const [form, setForm] = useState({

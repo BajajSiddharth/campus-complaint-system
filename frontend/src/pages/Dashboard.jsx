@@ -22,14 +22,22 @@ function Dashboard() {
     <div>
       <NavBar />
       <h2>Dashboard</h2>
-
-      {/* Summary */}
-      <div style={{ display: "flex", gap: "20px", marginBottom: "20px" }}>
-        <div><strong>Total</strong><div>{total}</div></div>
-        <div><strong>Open</strong><div>{open}</div></div>
-        <div><strong>In Progress</strong><div>{inProgress}</div></div>
-        <div><strong>Resolved</strong><div>{resolved}</div></div>
+      
+      {/* Summary Cards */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: "16px",
+          marginBottom: "24px"
+        }}
+      >
+        <SummaryCard title="Total Complaints" value={total} color="#2563eb" />
+        <SummaryCard title="Open" value={open} color="#dc2626" />
+        <SummaryCard title="In Progress" value={inProgress} color="#d97706" />
+        <SummaryCard title="Resolved" value={resolved} color="#16a34a" />
       </div>
+
 
       {/* List */}
       <ul>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
-import SummaryCard from "./components/SummaryCard";
+import SummaryCard from "../components/SummaryCard";
 
 function Dashboard() {
   const [complaints, setComplaints] = useState([]);
@@ -60,16 +60,8 @@ function Dashboard() {
           ))}
         </div>
 
-      /* {/* List */}
-      <ul>
-        {complaints.map(c => (
-          <li key={c._id}>
-            {c.title} - {c.status}
-          </li>
-        ))}
-      </ul>
-    </div>
-  ); */
+      </div>
+  );
 }
 
 export default Dashboard;

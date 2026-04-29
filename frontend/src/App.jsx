@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import CreateComplaint from "./pages/CreateComplaint";
 import AssignComplaint from "./pages/AssignComplaint";
 import UpdateStatus from "./pages/UpdateStatus";
+import RequireRole from "./components/RequireRole"; 
 
 
 function App() {

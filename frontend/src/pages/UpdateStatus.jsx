@@ -37,6 +37,8 @@ function UpdateStatus() {
   };
 
   return (
+    <>
+    <NavBar />
     <div style={{ padding: "20px" }}>
       <h2>My Assigned Complaints</h2>
 
@@ -59,6 +61,7 @@ function UpdateStatus() {
         ))}
       </ul>
     </div>
+    </>
   );
 }
 

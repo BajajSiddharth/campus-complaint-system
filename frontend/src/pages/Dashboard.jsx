@@ -16,6 +16,8 @@ function Dashboard() {
   }, []);
 
   return (
+    <>
+    <NavBar />
     <div>
       <h2>Complaints</h2>
       
@@ -27,6 +29,7 @@ function Dashboard() {
         ))}
       </ul>
     </div>
+    </>
   );
 }
 

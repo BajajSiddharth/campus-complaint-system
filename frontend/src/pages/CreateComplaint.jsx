@@ -41,6 +41,8 @@ function CreateComplaint() {
   };
 
   return (
+    <>
+    <NavBar />
     <div style={{ padding: "20px" }}>
       <h2>Create Complaint</h2>
 
@@ -83,6 +85,7 @@ function CreateComplaint() {
         <button type="submit">Submit Complaint</button>
       </form>
     </div>
+    </>
   );
 }
 

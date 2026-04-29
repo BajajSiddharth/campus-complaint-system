@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 const complaintRoutes = require("./routes/complaint.routes");
 const app = express();
 
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
+
+
 const cors = require("cors");
 app.use(cors());
 
@@ -20,6 +24,8 @@ mongoose
 
 
 app.use("/complaints", complaintRoutes);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.listen(5000, () =>
   console.log("Complaint Service running on port 5000")

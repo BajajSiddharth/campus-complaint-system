@@ -2,13 +2,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const complaintRoutes = require("./routes/complaint.routes");
 
-const app = express();
-app.use(express.json());
-
 const cors = require("cors");
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/fsad_complaints");
+const app = express();
+app.use(express.json());
+
+const mongoose = require("mongoose");
+
+mongoose
+  .connect("mongodb://127.0.0.1:27017/fsad_complaints")
+  .then(() => {
+    console.log("✅ MongoDB connected (Complaint Service)");
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+  });
+
 
 app.use("/complaints", complaintRoutes);
 

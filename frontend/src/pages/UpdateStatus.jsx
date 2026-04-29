@@ -36,44 +36,52 @@ function UpdateStatus() {
       alert("Status update failed");
     }
   };
-
-  
   return (
-    <>
-      <NavBar />
-      <PageContainer title="My Assigned Complaints">
-        {complaints.map(c => (
-          <div
-            key={c._id}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              padding: "12px",
-              borderBottom: "1px solid #e5e7eb"
-            }}
-          >
-            {c.status === "IN_PROGRESS" && (
-              <button
-                onClick={() => updateStatus(c._id)}
-                style={{
-                  backgroundColor: "#16a34a",
-                  color: "#ffffff",
-                  border: "none",
-                  padding: "6px 10px",
-                  borderRadius: "6px",
-                  cursor: "pointer"
-                }}
-              >
-                Mark Resolved
-              </button>
-            )}
+  <>
+    <NavBar />
+
+    <PageContainer title="My Assigned Complaints">
+      {complaints.length === 0 && <p>No assigned complaints</p>}
+
+      {complaints.map(c => (
+        <div
+          key={c._id}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "12px",
+            borderBottom: "1px solid #e5e7eb"
+          }}
+        >
+          {/* ✅ Always show complaint info */}
+          <div>
+            <strong>{c.title}</strong>
+            <div style={{ fontSize: "14px", color: "#6b7280" }}>
+              Status: {c.status}
+            </div>
           </div>
-        ))}
-      </PageContainer>
-    </>
-  );
 
-}
-
+          {/* ✅ Show button ONLY when allowed */}
+          {c.status === "IN_PROGRESS" && (
+            <button
+              onClick={() => updateStatus(c._id)}
+              style={{
+                backgroundColor: "#16a34a",
+                color: "#ffffff",
+                border: "none",
+                padding: "6px 10px",
+                borderRadius: "6px",
+                cursor: "pointer"
+              }}
+            >
+              Mark Resolved
+            </button>
+          )}
+        </div>
+      ))}
+    </PageContainer>
+  </>
+);
 export default UpdateStatus;
 ``

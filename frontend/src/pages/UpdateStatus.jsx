@@ -52,10 +52,21 @@ function UpdateStatus() {
               borderBottom: "1px solid #e5e7eb"
             }}
           >
-            <span>{c.title}</span>
-            <button onClick={() => updateStatus(c._id)}>
-              Mark Resolved
-            </button>
+            {c.status === "IN_PROGRESS" && (
+              <button
+                onClick={() => updateStatus(c._id)}
+                style={{
+                  backgroundColor: "#16a34a",
+                  color: "#ffffff",
+                  border: "none",
+                  padding: "6px 10px",
+                  borderRadius: "6px",
+                  cursor: "pointer"
+                }}
+              >
+                Mark Resolved
+              </button>
+            )}
           </div>
         ))}
       </PageContainer>

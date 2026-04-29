@@ -12,8 +12,26 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/create-complaint" element={<CreateComplaint />} />
-      <Route path="/assign-complaints" element={<AssignComplaint />} />
-      <Route path="/update-status" element={<UpdateStatus />} />
+      
+      <Route
+        path="/assign-complaints"
+        element={
+          <RequireRole allowedRoles={["ADMIN"]}>
+            <AssignComplaint />
+          </RequireRole>
+        }
+      />
+
+      
+      <Route
+        path="/update-status"
+        element={
+          <RequireRole allowedRoles={["MAINTENANCE"]}>
+            <UpdateStatus />
+          </RequireRole>
+        }
+      />
+
     </Routes>
   );
 }

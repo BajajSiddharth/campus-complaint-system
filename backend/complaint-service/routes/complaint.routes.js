@@ -2,6 +2,40 @@ const router = require("express").Router();
 const Complaint = require("../models/Complaint");
 const auth = require("../middleware/auth.middleware");
 
+/**
+ * @swagger
+ * /complaints:
+ *   post:
+ *     summary: Create a new complaint
+ *     tags: [Complaints]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - category
+ *               - priority
+ *             properties:
+ *               title:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *               priority:
+ *                 type: string
+ *               location:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Complaint created successfully
+ *       401:
+ *         description: Unauthorized
+ */
+
 router.post("/", auth, async (req, res) => {
   const complaint = await Complaint.create({
     ...req.body,
@@ -45,38 +79,4 @@ router.put("/:id/status", auth, async (req, res) => {
 });
 module.exports = router;
 
-/**
- * @swagger
- * /complaints:
- *   post:
- *     summary: Create a new complaint
- *     tags: [Complaints]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - title
- *               - category
- *               - priority
- *             properties:
- *               title:
- *                 type: string
- *               category:
- *                 type: string
- *               priority:
- *                 type: string
- *               location:
- *                 type: string
- *               description:
- *                 type: string
- *     responses:
- *       201:
- *         description: Complaint created successfully
- *       401:
- *         description: Unauthorized
- */
-router.post("/", auth, createComplaint);
 ``

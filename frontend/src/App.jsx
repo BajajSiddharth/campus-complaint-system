@@ -9,6 +9,7 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/create-complaint" element={<CreateComplaint />} />
+      <Route path="/assign-complaints" element={<AssignComplaint />} />
     </Routes>
   );
 }

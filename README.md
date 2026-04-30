@@ -187,10 +187,10 @@ npm run dev
 
 🚀 Future Enhancements
 ---
--Email notifications
--File upload for complaint images
--Analytics dashboard
--Docker‑based deployment
+- Email notifications
+- File upload for complaint images
+- Analytics dashboard
+- Docker‑based deployment
 
 📌 Conclusion
 ---

@@ -34,3 +34,186 @@ Auth Service (JWT) ---- Complaint Service
 |
 MongoDB
 
+---
+## 👥 User Roles
+
+### Student / Staff
+- Login to the system  
+- Create maintenance complaints  
+- View their own complaints and status  
+
+### Admin
+- View all complaints  
+- Assign complaints to maintenance staff  
+- Monitor complaint status  
+
+### Maintenance Staff
+- View assigned complaints  
+- Update complaint status to **RESOLVED**  
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+- React (Vite)  
+- Axios  
+- Role‑based UI navigation  
+
+### Backend
+- Node.js  
+- Express.js  
+- MongoDB  
+- JWT Authentication  
+
+### Documentation
+- Swagger (OpenAPI 3.0)  
+- Centralized Swagger UI  
+
+---
+
+## 🔧 Backend Services
+
+### Auth Service
+- **Purpose:** Authenticate users and generate JWT tokens  
+- **Port:** `4000`  
+- **Endpoint:**  
+  - `POST /auth/login`
+
+### Complaint Service
+- **Purpose:** Manage complaints and workflow  
+- **Port:** `5000`  
+- **Endpoints:**  
+  - `POST /complaints` – Create complaint  
+  - `GET /complaints` – Fetch complaints (role‑based)  
+  - `PUT /complaints/{id}/assign` – Assign complaint (Admin)  
+  - `PUT /complaints/{id}/status` – Update status (Maintenance)  
+
+---
+
+## 🔄 Complaint Lifecycle
+
+## 👥 User Roles
+
+### Student / Staff
+- Login to the system  
+- Create maintenance complaints  
+- View their own complaints and status  
+
+### Admin
+- View all complaints  
+- Assign complaints to maintenance staff  
+- Monitor complaint status  
+
+### Maintenance Staff
+- View assigned complaints  
+- Update complaint status to **RESOLVED**  
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend
+- React (Vite)  
+- Axios  
+- Role‑based UI navigation  
+
+### Backend
+- Node.js  
+- Express.js  
+- MongoDB  
+- JWT Authentication  
+
+### Documentation
+- Swagger (OpenAPI 3.0)  
+- Centralized Swagger UI  
+
+---
+
+## 🔧 Backend Services
+
+### Auth Service
+- **Purpose:** Authenticate users and generate JWT tokens  
+- **Port:** `4000`  
+- **Endpoint:**  
+  - `POST /auth/login`
+
+### Complaint Service
+- **Purpose:** Manage complaints and workflow  
+- **Port:** `5000`  
+- **Endpoints:**  
+  - `POST /complaints` – Create complaint  
+  - `GET /complaints` – Fetch complaints (role‑based)  
+  - `PUT /complaints/{id}/assign` – Assign complaint (Admin)  
+  - `PUT /complaints/{id}/status` – Update status (Maintenance)  
+
+---
+
+## 🔄 Complaint Lifecycle
+
+OPEN → IN_PROGRESS → RESOLVED
+
+- Complaints are created with status **OPEN**  
+- Admin assigns complaint → status becomes **IN_PROGRESS**  
+- Maintenance resolves complaint → status becomes **RESOLVED**  
+
+---
+
+## 🎨 Frontend Features
+
+- Secure login page  
+- Dashboard with summary counts  
+- Create Complaint form  
+- Assign Complaint UI (Admin)  
+- Update Status UI (Maintenance)  
+- Role‑based navigation bar  
+- Polished and consistent UI  
+
+---
+
+## 📘 API Documentation (Swagger)
+
+### Central Swagger UI
+
+A **central Swagger UI** aggregates API documentation from all backend services.
+
+http://localhost:3001/api-docs
+
+### Features
+- Interactive API testing  
+- Request/response schemas  
+- JWT authentication support  
+- Single documentation page for all services  
+
+---
+
+## 🔐 Security
+
+- JWT‑based authentication  
+- Role‑based access control  
+- Protected APIs using middleware  
+
+---
+
+## 📷 Screenshots (To Be Added)
+
+- Login Page  
+- Dashboard  
+- Create Complaint Page  
+- Assign Complaint Page  
+- Update Status Page  
+- Swagger UI  
+
+---
+
+## ✅ How to Run the Project
+
+### Prerequisites
+- Node.js (v16+)  
+- MongoDB  
+
+### Run Auth Service
+```bash
+cd auth-service
+npm install
+npm start

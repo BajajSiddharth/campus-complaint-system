@@ -1,6 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth.routes");
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
 
 const app = express();
 app.use(express.json());
@@ -19,6 +21,8 @@ mongoose
 
 
 app.use("/auth", authRoutes);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.listen(4000, () =>
   console.log("Auth Service running on port 4000")

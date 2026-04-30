@@ -160,3 +160,34 @@ http://localhost:3001/api-docs
 cd auth-service
 npm install
 npm start
+
+### Run Complaint Service
+```bash
+cd complaint-service
+npm install
+npm start
+
+### Run Central Swagger
+```bash
+cd api-docs
+npm install
+node server.js
+
+### Run Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+
+---
+
+🚀 Future Enhancements
+
+Email notifications
+File upload for complaint images
+Analytics dashboard
+Docker‑based deployment
+
+
+📌 Conclusion
+The Campus Maintenance & Complaint Management System provides a scalable, user‑friendly solution for managing campus maintenance issues. The use of microservices, role‑based access, and centralized API documentation ensures maintainability and real‑world applicability.

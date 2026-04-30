@@ -1,0 +1,30 @@
+const swaggerJsdoc = require("swagger-jsdoc");const swagger: "3.0.0",
+    info: {
+      title: "Campus Maintenance System API",
+      version: "1.0.0",
+      description: "Combined API documentation for Auth and Complaint services"
+    },
+    servers: [
+      { url: "http://localhost:4000", description: "Auth Service" },
+      { url: "http://localhost:5000", description: "Complaint Service" }
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT"
+        }
+      }
+    }
+  },
+  apis: [
+    "../auth-service/routes/*.js",
+    "../complaint-service/routes/*.js"
+  ]
+};
+
+module.exports = swaggerJsdoc(options);
+
+const options = {
+  definition: {

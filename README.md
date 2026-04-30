@@ -160,6 +160,7 @@ http://localhost:3001/api-docs
 cd auth-service
 npm install
 npm start
+```
 
 ### Run Complaint Service
 ```bash

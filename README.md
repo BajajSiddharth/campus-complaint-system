@@ -167,18 +167,21 @@ npm start
 cd complaint-service
 npm install
 npm start
+```
 
 ### Run Central Swagger
 ```bash
 cd api-docs
 npm install
 node server.js
+```
 
 ### Run Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
+```
 
 ---
 

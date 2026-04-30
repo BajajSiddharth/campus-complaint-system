@@ -186,17 +186,12 @@ npm run dev
 ---
 
 🚀 Future Enhancements
-
 ---
-
-Email notifications
-File upload for complaint images
-Analytics dashboard
-Docker‑based deployment
-
+-Email notifications
+-File upload for complaint images
+-Analytics dashboard
+-Docker‑based deployment
 
 📌 Conclusion
-
 ---
-
 The Campus Maintenance & Complaint Management System provides a scalable, user‑friendly solution for managing campus maintenance issues. The use of microservices, role‑based access, and centralized API documentation ensures maintainability and real‑world applicability.

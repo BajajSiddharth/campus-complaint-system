@@ -22,6 +22,10 @@ mongoose
 
 app.use("/auth", authRoutes);
 
+app.get("/swagger.json", (req, res) => {
+  res.json(swaggerSpec);
+});
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.listen(4000, () =>

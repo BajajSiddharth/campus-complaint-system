@@ -25,6 +25,10 @@ mongoose
 
 app.use("/complaints", complaintRoutes);
 
+app.get("/swagger.json", (req, res) => {
+  res.json(swaggerSpec);
+});
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 app.listen(5000, () =>

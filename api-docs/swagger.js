@@ -22,10 +22,12 @@ const options = {
       },
     },
   },
+  
   apis: [
-    "../auth-service/routes/*.js",
-    "../complaint-service/routes/*.js"
-  ],
+      path.join(__dirname, "../auth-service/routes/*.js"),
+      path.join(__dirname, "../complaint-service/routes/*.js")
+    ]
+
 };
 
 module.exports = swaggerJsdoc(options);

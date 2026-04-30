@@ -1,34 +1,37 @@
-const path = require("path");
 const swaggerJsdoc = require("swagger-jsdoc");
+const path = require("path");
 
 const options = {
   definition: {
-    openapi: "3.0.0", // Changed 'swagger' to 'openapi' (standard for 3.0)
+    openapi: "3.0.0",
     info: {
       title: "Campus Maintenance System API",
       version: "1.0.0",
-      description: "Combined API documentation for Auth and Complaint services",
+      description: "Centralized API documentation for all microservices"
     },
     servers: [
       { url: "http://localhost:4000", description: "Auth Service" },
-      { url: "http://localhost:5000", description: "Complaint Service" },
+      { url: "http://localhost:5000", description: "Complaint Service" }
     ],
     components: {
       securitySchemes: {
         bearerAuth: {
           type: "http",
           scheme: "bearer",
-          bearerFormat: "JWT",
-        },
-      },
-    },
+          bearerFormat: "JWT"
+        }
+      }
+    }
   },
-  
-  apis: [
-      path.join(__dirname, "../auth-service/routes/*.js"),
-      path.join(__dirname, "../complaint-service/routes/*.js")
-    ]
 
+  // ✅ ABSOLUTE PATHS — this fixes 99% of issues
+  apis: [
+    path.resolve(__dirname, "../auth-service/routes/auth.routes.js"),
+    path.resolve(__dirname, "../complaint-service/routes/complaint.routes.js")
+  ]
 };
 
-module.exports = swaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options);
+
+module.exports = swaggerSpec;
+``

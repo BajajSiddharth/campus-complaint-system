@@ -8,6 +8,13 @@ const app = express();
 // Allow browser access
 app.use(cors());
 
+
+console.log(
+  "Swagger paths found:",
+  Object.keys(swaggerSpec.paths || {})
+);
+
+
 // Swagger UI
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

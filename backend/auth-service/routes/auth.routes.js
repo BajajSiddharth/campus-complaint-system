@@ -2,6 +2,46 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login user and generate JWT token
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: admin@campus.edu
+ *               password:
+ *                 type: string
+ *                 example: admin123
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 role:
+ *                   type: string
+ *                   example: ADMIN
+ *       401:
+ *         description: Invalid credentials
+ */
+
+
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
